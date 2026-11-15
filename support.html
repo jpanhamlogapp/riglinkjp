@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RigLink JP サポート / Support</title>
+<style>
+  :root{--bg:#ffffff;--fg:#1e293b;--muted:#64748b;--line:#e2e8f0;--accent:#0e7490;--card:#f8fafc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Segoe UI",Roboto,sans-serif;line-height:1.75;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  header{border-bottom:2px solid var(--accent);padding-bottom:20px;margin-bottom:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .icon{width:44px;height:44px;border-radius:10px;flex:0 0 auto}
+  h1{font-size:1.35rem;margin:0}
+  .sub{color:var(--muted);font-size:.9rem;margin-top:2px}
+  h2{font-size:1.05rem;margin:2.2em 0 .4em;color:var(--accent)}
+  .lang{color:var(--muted);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-top:2.6em}
+  p{margin:.5em 0} ul{margin:.4em 0 .8em;padding-left:1.2em} li{margin:.25em 0}
+  a{color:var(--accent)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:1em 0}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+  code{background:var(--card);padding:.1em .35em;border-radius:5px;font-size:.9em}
+  nav a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="icon" src="images/icon.png" width="44" height="44" alt="">
+      <div><h1>RigLink JP</h1><div class="sub">サポート / Support</div></div>
+    </div>
+    <nav style="margin-top:12px;font-size:.9rem"><a href="index.html">概要</a><a href="support.html">サポート</a><a href="privacy.html">プライバシー</a></nav>
+  </header>
+
+  <div class="lang">日本語</div>
+  <h2>必要なもの</h2>
+  <ul>
+    <li>macOS 14 以降の Mac</li>
+    <li>YAESU FT-891 / FT-891M(本体の USB 端子を Mac につなぎます)</li>
+    <li>受信音声・送信音声のインターフェース Digirig DR-891(類似品・自作のインターフェースはサポート外です)</li>
+    <li>FT8 などで運用するときは WSJT-X(別途入手。任意)</li>
+    <li>アマチュア無線の無線局免許。送信は免許の範囲(周波数・出力・電波の型式)で行ってください。</li>
+  </ul>
+
+  <h2>はじめかた</h2>
+  <ol>
+    <li>FT-891 の USB 端子を Mac につなぎ、無線機の電源を入れます。</li>
+    <li>RigLink JP の「接続」でポートを選んで接続します。CAT の速度は自動で確かめます(<code>ID;</code> を送るだけで、設定は変えません)。</li>
+    <li>「運用」で周波数・モード・送受信の状態を確かめます。</li>
+    <li>WSJT-X と一緒に使うときは、WSJT-X の無線機の設定を「Hamlib NET rigctl」・<code>127.0.0.1:4532</code> にして、RigLink JP の「運用」から「許可して開始…」を押します。送信を許可する範囲(バンド・回数・時間)は確認画面で選びます。</li>
+  </ol>
+
+  <h2>送信の安全について</h2>
+  <ul>
+    <li>RigLink JP は、利用者が許可した間だけ WSJT-X からの送信を通します。許可は保存せず、ブリッジを止める・切断する・アプリを終了すると終わります。</li>
+    <li>送信の停止・許可の取り消し・切断は、どのプランでもいつでも使えます。</li>
+  </ul>
+
+  <h2>プラン(自動更新の購読)</h2>
+  <ul>
+    <li>無料: 接続・ダッシュボード・診断・バンド情報・設定アシスタント・メニューの読み出し・周波数とメーターの表示</li>
+    <li>ライト(月額 ¥400 / 年額 ¥4,000): リグ操作・指定範囲スキャン・ウォーターフォール・HamLogJP へのログ転送・運用ログの読み込み・メニュー CSV の読み込み</li>
+    <li>プロ(月額 ¥700 / 年額 ¥7,000): ライトの全部と WSJT-X 連携・フィルター既定値の復元</li>
+    <li>各プランとも最初の 2 週間は無料です(初めての方のみ)。購読は自動で更新されます。更新の 24 時間前までに解約すれば料金はかかりません。解約は「システム設定」→ Apple アカウント →「メディアと購入」→「サブスクリプション」、または App Store のアカウントから行えます。</li>
+    <li>購読が終わっても、運用ログの書き出しは無料で使えます。</li>
+    <li>利用規約: <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple 標準 EULA</a></li>
+  </ul>
+
+  <h2>よくある質問</h2>
+  <p><strong>ポートが見つかりません。</strong><br>USB ケーブルと無線機の電源を確かめてください。FT-891 の USB には 2 つのポートがあり、CAT は Enhanced COM(インターフェース 0)側です。「診断」でポートの一覧と IF 番号を確かめられます。</p>
+  <p><strong>WSJT-X を先に起動すると接続できません。</strong><br>同じ無線機を WSJT-X と RigLink JP が同時に直接操作しないよう、WSJT-X を検出している間は接続を止めています。WSJT-X が CAT ブリッジ経由の設定になっていることを確かめたうえで、「WSJT-X は CAT ブリッジ経由の設定です。接続する…」を押してください。</p>
+  <p><strong>交信を HamLogJP に送るには?</strong><br>「ログ連携」の「HamLogJP へ送る」を押します(ライト以上)。HamLogJP 側の設定で「RigLink JP から自動で取り込む」をオンにしてください。</p>
+
+  <h2>お問い合わせ</h2>
+  <p>genre_pincers_3d@icloud.com(コールサイン・Mac と macOS の版・RigLink JP の版・起きたことをお書きください)</p>
+
+  <div class="lang">English</div>
+  <h2>Requirements</h2>
+  <ul>
+    <li>A Mac with macOS 14 or later</li>
+    <li>YAESU FT-891 / FT-891M (connect the radio's USB port to the Mac)</li>
+    <li>Digirig DR-891 audio interface (similar or home-made interfaces are not supported)</li>
+    <li>WSJT-X for FT8 and similar modes (optional, obtained separately)</li>
+    <li>An amateur radio station licence. Transmit only within your licence.</li>
+  </ul>
+  <h2>Getting started</h2>
+  <ol>
+    <li>Connect the FT-891 USB port to the Mac and turn the radio on.</li>
+    <li>In Connection, choose the port and connect.</li>
+    <li>Check frequency, mode and TX/RX state in Operation.</li>
+    <li>To use WSJT-X, set its radio to “Hamlib NET rigctl” at <code>127.0.0.1:4532</code>, then press “Permit and start…” in Operation and choose what to allow.</li>
+  </ol>
+  <h2>Plans (auto-renewable subscriptions)</h2>
+  <ul>
+    <li>Free: connection, dashboard, diagnostics, band info, setup assistant, menu reading, frequency and meter display</li>
+    <li>Lite (¥400/month or ¥4,000/year): rig control, range scan, waterfall, log transfer to HamLogJP, operating log import, menu CSV import</li>
+    <li>Pro (¥700/month or ¥7,000/year): everything in Lite plus WSJT-X integration and filter default restore</li>
+    <li>Each plan starts with a 2-week free trial for new subscribers. Subscriptions renew automatically unless cancelled at least 24 hours before renewal. Manage or cancel in your Apple Account subscriptions.</li>
+    <li>Terms of Use: <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple standard EULA</a></li>
+  </ul>
+  <h2>Contact</h2>
+  <p>genre_pincers_3d@icloud.com</p>
+
+  <footer>© 2026 JL1LCQ · RigLink JP</footer>
+</div>
+</body>
+</html>
