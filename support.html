@@ -80,6 +80,12 @@
   </div>
   <p>使う順番は、RigLink JP で無線機に接続 →「運用」の「許可して開始…」→ WSJT-X の順です。WSJT-X に「Rig Control Error」が出たときは、RigLink JP 側を開始してから Retry を押してください(Cancel を押すと WSJT-X が終了します)。</p>
   <p>無線機側は、モードを DATA-USB にします。送信の音量(FT-891 のメニュー 16-14 DATA GAIN と WSJT-X の Pwr)は、ALC が振れすぎない範囲に合わせてください(開発者の環境では DATA GAIN 15・出力 5 W で ALC がゾーン内でした。環境で変わります)。</p>
+  <h2>表示モードと文字の大きさ</h2>
+  <p>メニューバーの「RigLink JP」→「設定…」(<code>⌘,</code>)で変えられます。選んだ内容はすぐに反映され、次の起動でも保たれます。</p>
+  <ul>
+    <li><strong>表示モード</strong>: システムに合わせる / ライト / ダーク</li>
+    <li><strong>文字の大きさ</strong>: 標準 / 大 / 特大 / 最大(アプリの中の文字が大きくなります。macOS の設定とは別です)</li>
+  </ul>
   <h2>画面</h2>
   <p>バージョン 1.0 の画面です(YAESU FT-891M に接続し、受信だけで撮影)。</p>
   <figure class="shot"><img src="images/v10_operation.jpg" width="1440" height="900" loading="lazy" alt="運用"><figcaption><strong>運用</strong>:接続から WSJT-X の許可、ログまでの状態を上から順に確かめられます。</figcaption></figure>
@@ -153,6 +159,12 @@
   </div>
   <p>Start in this order: connect to the radio in RigLink JP, press “Permit and start…” in Operation, then use WSJT-X. If WSJT-X shows “Rig Control Error”, start the RigLink JP side and press Retry (Cancel quits WSJT-X).</p>
   <p>Set the radio to DATA-USB. Adjust the transmit audio (FT-891 menu 16-14 DATA GAIN and the WSJT-X Pwr slider) so that ALC stays in its zone (in the developer's setup, DATA GAIN 15 at 5 W; this varies).</p>
+  <h2>Appearance and text size</h2>
+  <p>Open Settings… (<code>⌘,</code>) from the RigLink JP menu in the menu bar. Changes apply immediately and are kept for the next launch.</p>
+  <ul>
+    <li><strong>Appearance</strong>: match the system, light, or dark</li>
+    <li><strong>Text size</strong>: standard, large, extra large, or largest (this enlarges text inside the app and is separate from the macOS setting)</li>
+  </ul>
   <h2>Screens</h2>
   <p>Screens from version 1.0, connected to a Yaesu FT-891M in receive only. Version 1.0 is shown in Japanese; English display is planned for the next update.</p>
   <figure class="shot"><img src="images/v10_operation.jpg" width="1440" height="900" loading="lazy" alt="Operation"><figcaption><strong>Operation</strong>: Check each step in order, from the connection to the WSJT-X permission and the log.</figcaption></figure>
