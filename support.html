@@ -22,6 +22,10 @@
   footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
   code{background:var(--card);padding:.1em .35em;border-radius:5px;font-size:.9em}
   nav a{margin-right:14px}
+  .shot{margin:1.2em 0}
+  .shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px}
+  .shot figcaption{color:var(--muted);font-size:.88rem;margin-top:.4em}
+  .shot figcaption strong{color:var(--fg)}
 </style>
 </head>
 <body>
@@ -51,6 +55,14 @@
     <li>WSJT-X と一緒に使うときは、WSJT-X の無線機の設定を「Hamlib NET rigctl」・<code>127.0.0.1:4532</code> にして、RigLink JP の「運用」から「許可して開始…」を押します。送信を許可する範囲(バンド・回数・時間)は確認画面で選びます。</li>
   </ol>
 
+  <h2>画面</h2>
+  <p>バージョン 1.0 の画面です(YAESU FT-891M に接続し、受信だけで撮影)。</p>
+  <figure class="shot"><img src="images/v10_operation.jpg" width="1440" height="900" loading="lazy" alt="運用"><figcaption><strong>運用</strong>:接続から WSJT-X の許可、ログまでの状態を上から順に確かめられます。</figcaption></figure>
+  <figure class="shot"><img src="images/v10_dashboard.jpg" width="1440" height="900" loading="lazy" alt="ダッシュボード"><figcaption><strong>ダッシュボード</strong>:周波数・モード・メーターを大きく表示します(メーターは無線機から読んだ生の値です)。</figcaption></figure>
+  <figure class="shot"><img src="images/v10_rigcontrol.jpg" width="1440" height="900" loading="lazy" alt="リグ操作"><figcaption><strong>リグ操作</strong>:周波数・モード・フィルターなどを Mac から操作します(ライト以上)。</figcaption></figure>
+  <figure class="shot"><img src="images/v10_waterfall.jpg" width="1440" height="900" loading="lazy" alt="ウォーターフォール"><figcaption><strong>ウォーターフォール</strong>:受信音声をウォーターフォールで表示します(ライト以上)。</figcaption></figure>
+  <figure class="shot"><img src="images/v10_bandinfo.jpg" width="1440" height="900" loading="lazy" alt="バンド情報"><figcaption><strong>バンド情報</strong>:バンドプランと、資格ごとの操作できる範囲を確かめられます。</figcaption></figure>
+  <figure class="shot"><img src="images/v10_wsjtx.jpg" width="1440" height="900" loading="lazy" alt="WSJT-X 詳細"><figcaption><strong>WSJT-X 詳細</strong>:WSJT-X との接続の状態と、CAT ブリッジの設定を確かめます(WSJT-X 連携はプロ)。</figcaption></figure>
   <h2>送信の安全について</h2>
   <ul>
     <li>RigLink JP は、利用者が許可した間だけ WSJT-X からの送信を通します。許可は保存せず、ブリッジを止める・切断する・アプリを終了すると終わります。</li>
@@ -91,6 +103,14 @@
     <li>Check frequency, mode and TX/RX state in Operation.</li>
     <li>To use WSJT-X, set its radio to “Hamlib NET rigctl” at <code>127.0.0.1:4532</code>, then press “Permit and start…” in Operation and choose what to allow.</li>
   </ol>
+  <h2>Screens</h2>
+  <p>Screens from version 1.0, connected to a Yaesu FT-891M in receive only. Version 1.0 is shown in Japanese; English display is planned for the next update.</p>
+  <figure class="shot"><img src="images/v10_operation.jpg" width="1440" height="900" loading="lazy" alt="Operation"><figcaption><strong>Operation</strong>: Check each step in order, from the connection to the WSJT-X permission and the log.</figcaption></figure>
+  <figure class="shot"><img src="images/v10_dashboard.jpg" width="1440" height="900" loading="lazy" alt="Dashboard"><figcaption><strong>Dashboard</strong>: Frequency, mode and meters in large type (meters are the raw values read from the radio).</figcaption></figure>
+  <figure class="shot"><img src="images/v10_rigcontrol.jpg" width="1440" height="900" loading="lazy" alt="Rig Control"><figcaption><strong>Rig Control</strong>: Change frequency, mode, filters and more from your Mac (Lite or higher).</figcaption></figure>
+  <figure class="shot"><img src="images/v10_waterfall.jpg" width="1440" height="900" loading="lazy" alt="Waterfall"><figcaption><strong>Waterfall</strong>: The received audio shown as a waterfall (Lite or higher).</figcaption></figure>
+  <figure class="shot"><img src="images/v10_bandinfo.jpg" width="1440" height="900" loading="lazy" alt="Band Info"><figcaption><strong>Band Info</strong>: The Japanese band plan and what each licence class may operate.</figcaption></figure>
+  <figure class="shot"><img src="images/v10_wsjtx.jpg" width="1440" height="900" loading="lazy" alt="WSJT-X Details"><figcaption><strong>WSJT-X Details</strong>: The state of the WSJT-X connection and the CAT bridge settings (WSJT-X integration requires Pro).</figcaption></figure>
   <h2>Plans (auto-renewable subscriptions)</h2>
   <ul>
     <li>Free: connection, dashboard, diagnostics, band info, setup assistant, menu reading, frequency and meter display</li>
