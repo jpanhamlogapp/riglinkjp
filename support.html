@@ -42,7 +42,8 @@
   <ul>
     <li>macOS 14 以降の Mac</li>
     <li>YAESU FT-891 / FT-891M(本体の USB 端子を Mac につなぎます)</li>
-    <li>受信音声・送信音声のインターフェース Digirig DR-891(類似品・自作のインターフェースはサポート外です)</li>
+    <li><strong>Silicon Labs の CP210x VCP ドライバー</strong>(無料。<a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers">Silicon Labs の配布ページ</a>から macOS 用を入れます)。FT-891 の USB(CP2105)を Mac で使うために必要です。macOS に標準で入っているドライバーでは、FT-891 の CAT と通信できません(開発者の環境で確認)。入れたあと、「システム設定」でドライバーの許可を求められたら許可してください。</li>
+    <li>受信音声・送信音声のインターフェース Digirig DR-891(類似品・自作のインターフェースはサポート外です)。音声は macOS の標準の機能で「USB Audio Device」として認識され、追加のドライバーは要りません。</li>
     <li>FT8 などで運用するときは WSJT-X(別途入手。任意)</li>
     <li>アマチュア無線の無線局免許。送信は免許の範囲(周波数・出力・電波の型式)で行ってください。</li>
   </ul>
@@ -55,6 +56,30 @@
     <li>WSJT-X と一緒に使うときは、WSJT-X の無線機の設定を「Hamlib NET rigctl」・<code>127.0.0.1:4532</code> にして、RigLink JP の「運用」から「許可して開始…」を押します。送信を許可する範囲(バンド・回数・時間)は確認画面で選びます。</li>
   </ol>
 
+  <h2>WSJT-X の設定(参考)</h2>
+  <p>開発者の環境(WSJT-X 3.0.2・FT-891M・Digirig DR-891)で動作を確かめた設定です。WSJT-X の画面の名前は英語のまま書いています。</p>
+  <div class="card">
+  <p><strong>Settings › Radio</strong></p>
+  <ul>
+    <li>Rig: <code>Hamlib NET rigctl</code></li>
+    <li>Network Server: <code>127.0.0.1:4532</code></li>
+    <li>PTT Method: <code>CAT</code></li>
+    <li>Transmit Audio Source: <code>Rear/Data</code>(Front/Mic にすると、RigLink JP は送信の要求を断ります)</li>
+    <li>Mode: <code>None</code>(Data/Pkt にすると WSJT-X がモードを変えようとし、RigLink JP はそれを断ります。モードは無線機か RigLink JP で DATA-USB にしておきます)</li>
+    <li>Split Operation: <code>None</code></li>
+  </ul>
+  <p><strong>Settings › Audio</strong></p>
+  <ul>
+    <li>Input: <code>USB Audio Device</code>(Digirig DR-891)</li>
+    <li>Output: <code>USB Audio Device</code>・<code>Left</code>(DR-891 の右チャンネルは VOX 回路につながっていて、音が出ると送信に切り替わります。CAT 以外の経路で送信しないよう Left にします)</li>
+  </ul>
+  <p><strong>Settings › Reporting</strong></p>
+  <ul>
+    <li>UDP Server: <code>127.0.0.1</code>、UDP Server port number: <code>2237</code>(RigLink JP が WSJT-X の状態と交信の記録を受け取ります)</li>
+  </ul>
+  </div>
+  <p>使う順番は、RigLink JP で無線機に接続 →「運用」の「許可して開始…」→ WSJT-X の順です。WSJT-X に「Rig Control Error」が出たときは、RigLink JP 側を開始してから Retry を押してください(Cancel を押すと WSJT-X が終了します)。</p>
+  <p>無線機側は、モードを DATA-USB にします。送信の音量(FT-891 のメニュー 16-14 DATA GAIN と WSJT-X の Pwr)は、ALC が振れすぎない範囲に合わせてください(開発者の環境では DATA GAIN 15・出力 5 W で ALC がゾーン内でした。環境で変わります)。</p>
   <h2>画面</h2>
   <p>バージョン 1.0 の画面です(YAESU FT-891M に接続し、受信だけで撮影)。</p>
   <figure class="shot"><img src="images/v10_operation.jpg" width="1440" height="900" loading="lazy" alt="運用"><figcaption><strong>運用</strong>:接続から WSJT-X の許可、ログまでの状態を上から順に確かめられます。</figcaption></figure>
@@ -80,7 +105,7 @@
   </ul>
 
   <h2>よくある質問</h2>
-  <p><strong>ポートが見つかりません。</strong><br>USB ケーブルと無線機の電源を確かめてください。FT-891 の USB には 2 つのポートがあり、CAT は Enhanced COM(インターフェース 0)側です。「診断」でポートの一覧と IF 番号を確かめられます。</p>
+  <p><strong>ポートが見つかりません。</strong><br>USB ケーブルと無線機の電源を確かめてください。Silicon Labs の CP210x VCP ドライバーが入っているかも確かめてください(入っていると、ポートの名前が「SLAB_USBtoUART」で始まります)。FT-891 の USB には 2 つのポートがあり、CAT は Enhanced COM(インターフェース 0)側です。「診断」でポートの一覧と IF 番号を確かめられます。</p>
   <p><strong>WSJT-X を先に起動すると接続できません。</strong><br>同じ無線機を WSJT-X と RigLink JP が同時に直接操作しないよう、WSJT-X を検出している間は接続を止めています。WSJT-X が CAT ブリッジ経由の設定になっていることを確かめたうえで、「WSJT-X は CAT ブリッジ経由の設定です。接続する…」を押してください。</p>
   <p><strong>交信を HamLogJP に送るには?</strong><br>「ログ連携」の「HamLogJP へ送る」を押します(ライト以上)。HamLogJP 側の設定で「RigLink JP から自動で取り込む」をオンにしてください。</p>
 
@@ -92,7 +117,8 @@
   <ul>
     <li>A Mac with macOS 14 or later</li>
     <li>YAESU FT-891 / FT-891M (connect the radio's USB port to the Mac)</li>
-    <li>Digirig DR-891 audio interface (similar or home-made interfaces are not supported)</li>
+    <li><strong>Silicon Labs CP210x VCP driver</strong> (free; install the macOS version from the <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers">Silicon Labs download page</a>). It is required to use the FT-891 USB port (CP2105) on a Mac. The driver built into macOS could not communicate with the FT-891 CAT port in the developer's tests. If System Settings asks you to allow the driver after installation, allow it.</li>
+    <li>Digirig DR-891 audio interface (similar or home-made interfaces are not supported). Its audio appears as “USB Audio Device” using the standard macOS support; no extra driver is needed.</li>
     <li>WSJT-X for FT8 and similar modes (optional, obtained separately)</li>
     <li>An amateur radio station licence. Transmit only within your licence.</li>
   </ul>
@@ -103,6 +129,30 @@
     <li>Check frequency, mode and TX/RX state in Operation.</li>
     <li>To use WSJT-X, set its radio to “Hamlib NET rigctl” at <code>127.0.0.1:4532</code>, then press “Permit and start…” in Operation and choose what to allow.</li>
   </ol>
+  <h2>WSJT-X settings (reference)</h2>
+  <p>These are the settings verified in the developer's setup (WSJT-X 3.0.2, FT-891M, Digirig DR-891).</p>
+  <div class="card">
+  <p><strong>Settings › Radio</strong></p>
+  <ul>
+    <li>Rig: <code>Hamlib NET rigctl</code></li>
+    <li>Network Server: <code>127.0.0.1:4532</code></li>
+    <li>PTT Method: <code>CAT</code></li>
+    <li>Transmit Audio Source: <code>Rear/Data</code> (with Front/Mic, RigLink JP refuses the transmit request)</li>
+    <li>Mode: <code>None</code> (with Data/Pkt, WSJT-X tries to change the mode and RigLink JP refuses it; set the radio to DATA-USB on the radio or in RigLink JP)</li>
+    <li>Split Operation: <code>None</code></li>
+  </ul>
+  <p><strong>Settings › Audio</strong></p>
+  <ul>
+    <li>Input: <code>USB Audio Device</code> (Digirig DR-891)</li>
+    <li>Output: <code>USB Audio Device</code>, <code>Left</code> (the right channel of the DR-891 feeds its VOX circuit and would key the radio; use Left so that only CAT keys it)</li>
+  </ul>
+  <p><strong>Settings › Reporting</strong></p>
+  <ul>
+    <li>UDP Server: <code>127.0.0.1</code>, UDP Server port number: <code>2237</code> (RigLink JP receives the WSJT-X status and logged QSOs)</li>
+  </ul>
+  </div>
+  <p>Start in this order: connect to the radio in RigLink JP, press “Permit and start…” in Operation, then use WSJT-X. If WSJT-X shows “Rig Control Error”, start the RigLink JP side and press Retry (Cancel quits WSJT-X).</p>
+  <p>Set the radio to DATA-USB. Adjust the transmit audio (FT-891 menu 16-14 DATA GAIN and the WSJT-X Pwr slider) so that ALC stays in its zone (in the developer's setup, DATA GAIN 15 at 5 W; this varies).</p>
   <h2>Screens</h2>
   <p>Screens from version 1.0, connected to a Yaesu FT-891M in receive only. Version 1.0 is shown in Japanese; English display is planned for the next update.</p>
   <figure class="shot"><img src="images/v10_operation.jpg" width="1440" height="900" loading="lazy" alt="Operation"><figcaption><strong>Operation</strong>: Check each step in order, from the connection to the WSJT-X permission and the log.</figcaption></figure>
